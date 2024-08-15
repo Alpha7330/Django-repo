@@ -187,4 +187,3 @@ SIMPLE_JWT = {
 
 
 
-# HOLIDAY_API_KEY = '31b1dee3-c1e7-4bf6-8ba2-05fb171f2ef9'

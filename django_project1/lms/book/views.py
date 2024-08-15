@@ -9,6 +9,10 @@ from .models import *
 from .serializers import *
 from rest_framework import status
 from django.shortcuts import get_object_or_404
+from django.conf import settings
+import environ
+env = environ.Env()
+environ.Env.read_env('.env')
 # Create your views here.
 
 ###########------Author---------###########
