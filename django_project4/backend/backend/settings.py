@@ -133,5 +133,4 @@ EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 EMAIL_HOST_USER = 'alpha733060@gmail.com'
-EMAIL_HOST_PASSWORD = 'oxiu gzxc kuxq jixo'
 DEFAULT_FROM_EMAIL = 'alpha733060@gmail.com'

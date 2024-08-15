@@ -13,6 +13,7 @@ from django.conf import settings
 import environ
 env = environ.Env()
 environ.Env.read_env('.env')
+EMAIL_HOST_PASSWORD = env('EMAIL_HOST_PASSWORD')
 # Create your views here.
 
 ###########------Author---------###########

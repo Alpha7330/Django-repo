@@ -5,6 +5,11 @@ from django.core.mail import send_mail
 from django.contrib.auth.models import User
 from .models import EmailVerificationToken
 from .serializers import UserSerializer, EmailVerificationTokenSerializer
+from django.conf import settings
+import environ
+env = environ.Env()
+environ.Env.read_env('.env')
+EMAIL_HOST_PASSWORD = env('EMAIL_HOST_PASSWORD')
 
 @api_view(['POST'])
 def send_verification_email(request):

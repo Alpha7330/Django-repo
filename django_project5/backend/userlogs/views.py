@@ -8,7 +8,11 @@ from .serializers import *
 import random
 from rest_framework.permissions import AllowAny
 
-
+from django.conf import settings
+import environ
+env = environ.Env()
+environ.Env.read_env('.env')
+EMAIL_HOST_PASSWORD = env('EMAIL_HOST_PASSWORD')
 User = get_user_model()
 
 class GenerateOtp(APIView):
