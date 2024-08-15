@@ -1,0 +1,111 @@
+{%extends "index.html"%}
+{%load static%}
+
+{% block content %}
+<div class="container-flex text-center justify-content-center align-items-center" >
+    <div class="row justify-content-center align-middle" style="margin-top: 20px;">
+        <div class="col-md-4 text-light" style=" background-color: blueviolet;">
+            <h3>Register user</h3>
+        </div>
+        <div class="col-md-8 ">
+            <h3>search users</h3>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-4" style="background: aquamarine;">
+            <div class="container" >
+                <form action="/Users/add/" method="post" class="d-flex">
+                {%csrf_token%}
+                 <table class="table" style="margin-top: 20px;">
+                    <tr>
+                        <td style="text-align: left; vertical-align: middle; padding-left: 15px;">Name:</td>
+                        <td><input type="text" class="form-control" name="user_name"></td>
+                    </tr>
+
+                    <tr>
+                        <td style="text-align: left; vertical-align: middle; padding-left: 15px;">reference_id</td>
+                        <td><input type="text" class="form-control" name="reference_id"></td>
+                    </tr>
+
+                    <tr>
+                        <td style="text-align: left; vertical-align: middle; padding-left: 15px;">user_contact</td>
+                        <td><input type="text" class="form-control" name="user_contact"></td>
+                    </tr>
+
+                    <tr>
+                        <td style="text-align: left; vertical-align: middle; padding-left: 15px;">user_address</td>
+                        <td><input type="textarea" class="form-control" name="user_address"></td>
+                    </tr>
+
+                    <tr>
+                        <td colspan="2">
+                           <button class="btn btn-primary" type="submit">save</button>
+                        </td>
+                    </tr>
+                 </table>
+                 
+                </form>
+
+            </div>
+        </div>
+
+
+        <div class="col-md-8">
+            <nav class="navbar bg-body-light">
+                <div class="container-fluid justify-content-center align-items-center">
+                    <form class="d-flex" role="search"action="/Users/" method="post">
+                        {%csrf_token%}
+                        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="query" value="{{query}}">
+                        <button class="btn btn-outline-primary" type="submit">Search</button>
+                    </form>
+                </div>
+            </nav>
+
+            <div class="row" style="margin-top: 20px;">
+                <p>{{users|length}} users subscribed</p>
+            </div>
+
+            <div class="row" style="margin-top: 20px;">
+                <div class="container" style="overflow-y: auto; height: 400px;">
+                    <table class="table table-hover">
+                       <thead>
+                           <tr>
+                                <td>id</td>
+                                <td>name</td>
+                                <td>contact</td>
+                                <td>address</td>
+                                <td>reference_id</td>
+                           </tr>
+                       </thead>
+
+                       <tbody>
+                           {% for user in users%}
+                             <tr>
+                                <td>{{user.id}}</td>
+                                <td>
+                                    {%if user.active%}
+                                      <span class="btn btn-success">{{user.user_name}}</span>
+                                    {%else%}  
+                                      <span class="btn btn-secondary">{{user.user_name}}</span>
+                                    {%endif%}
+                                </td>
+                                <td>{{user.user_contact}}</td>
+                                <td>{{user.user_address}}</td>
+                                <td>{{user.reference_id}}</td>
+                             </tr>
+
+                           {%endfor%}
+                       </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        
+
+    </div>
+
+        
+</div>
+{% endblock content %}
